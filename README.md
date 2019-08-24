@@ -1,9 +1,8 @@
+----------------------------------------------------------
 Домашнее задание 33
 Добавлено: 16.08.2019 22:51
 Migrations, Factories, Seedz
 Смотрим презентацию с урока (в Описании урока есть)
-
-https://laravel.com/docs/5.8/migrations
 
 Создайте миграции к каждой из таблиц. 
 Так же создаем таблицу product_gallery.
@@ -14,7 +13,33 @@ https://laravel.com/docs/5.8/migrations
 
 Создаем сиды и запускаем их.
 
+----------------------------------------------------------
+Домашнее задание 34
+Добавлено: 21.08.2019 11:42
+Migrations, Seeders, Factories, Models, Eloquent, Relations
+Заканчиваем с миграциям.
+
+Создаем все необходимые таблицы.
+
+Создаем модели и связи между ними.
+
+Заполняем фабрики и сиды.
+
+Для Orders тоже создаем фабрику
+
+----------------------------------------------------------
+
+Модель и СИД и фабрика
+команды:
+php artisan make:model ProductCategory -f
+php artisan make:seeder ProductCategorySeeder
+php artisan db:seed --class=ProductCategorySeeder
 
 
-http://laranotes.ru
+СИД:
+php artisan db:seed --class=ProductCategorySeeder
+
+
+
+
 

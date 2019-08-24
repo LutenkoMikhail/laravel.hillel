@@ -20,11 +20,10 @@ class CreateOrdersTable extends Migration
             $table->string('shipping_data_country', 100);
             $table->string('shipping_data_city', 50);
             $table->string('shipping_data_address', 150);
-            $table->unsignedBigInteger('total_price');
+            $table->float('total_price');
             $table->timestamps();
         });
     }
-shipping
     /**
      * Reverse the migrations.
      *

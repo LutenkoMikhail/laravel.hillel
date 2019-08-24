@@ -16,7 +16,7 @@ class AddStatusForeingKeyToOrders extends Migration
         Schema::table('orders', function (Blueprint $table) {
             $table->foreign('status_id')
                 ->references('id')
-                ->on('order_status');
+                ->on('status_orders');
         });
     }
 

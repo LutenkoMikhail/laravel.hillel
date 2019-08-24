@@ -13,9 +13,9 @@ class CreateProductGalleryTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_gallery', function (Blueprint $table) {
+        Schema::create('product_galleries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 100)->unique();
+//            $table->string('name', 100)->unique();
             $table->text('image_path')->nullable();
             $table->unsignedBigInteger('product_id');
 
