@@ -18,26 +18,23 @@ Migrations, Factories, Seedz
 Добавлено: 21.08.2019 11:42
 Migrations, Seeders, Factories, Models, Eloquent, Relations
 Заканчиваем с миграциям.
-
 Создаем все необходимые таблицы.
+Заполняем фабрики и сиды.
+Для Orders тоже создаем фабрику
 
 Создаем модели и связи между ними.
-
-Заполняем фабрики и сиды.
-
-Для Orders тоже создаем фабрику
 
 ----------------------------------------------------------
 
 Модель и СИД и фабрика
-команды:
-php artisan make:model ProductCategory -f
-php artisan make:seeder ProductCategorySeeder
-php artisan db:seed --class=ProductCategorySeeder
+команды:OrderProduct
+php artisan make:model OrderProduct -f
+php artisan make:seeder OrderProductSeeder
+php artisan db:seed --class=OrderProductSeeder
 
 
 СИД:
-php artisan db:seed --class=ProductCategorySeeder
+php artisan db:seed --class=OrderProductSeeder
 
 
 
