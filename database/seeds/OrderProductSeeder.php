@@ -30,3 +30,16 @@ class OrderProductSeeder extends Seeder
         }
     }
 }
+//$users = DB::table('users')->select('name', 'email as user_email')->get();
+
+//DB::table('users')
+//    ->where('id', 1)
+//    ->update(['votes' => 1]);
+
+//$price = DB::table('orders')
+//    ->where('finalized', 1)
+//    ->avg('price');
+
+//$flight = App\Flight::find(1);
+//$flight->name = 'New Flight Name';
+//$flight->save();
