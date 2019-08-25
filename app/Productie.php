@@ -16,7 +16,7 @@ class Productie extends Model
         return $this->belongsToMan(\App\ProductGallery::class);
     }
 
-    public function productCategory()
+    public function category()
     {
         return $this->belongsToMany(\App\Category::class);
     }

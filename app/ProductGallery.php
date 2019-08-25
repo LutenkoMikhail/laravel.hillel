@@ -11,6 +11,6 @@ class ProductGallery extends Model
     ];
     public function productie()
     {
-        return $this->belongsToMany(Productie::class);
+        return $this->belongsToMany(\App\Productie::class);
     }
 }
