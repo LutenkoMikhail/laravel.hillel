@@ -11,12 +11,12 @@ class Order extends Model
         'shipping_data_city', 'shipping_data_address', 'total_price'
     ];
 
-    public function statusOrder()
+    public function status()
     {
         return $this->hasOne(\App\StatusOrder::class);
     }
 
-    public function orderProduct()
+    public function product()
     {
         return $this->hasMany(\App\OrderProduct::class);
     }

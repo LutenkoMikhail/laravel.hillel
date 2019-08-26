@@ -11,7 +11,7 @@ class Productie extends Model
         'price', 'discount', 'in_stock', 'count', 'thumbnail'
     ];
 
-    public function productGallary()
+    public function gallery()
     {
         return $this->belongsToMan(\App\ProductGallery::class);
     }
