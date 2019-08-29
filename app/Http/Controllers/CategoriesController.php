@@ -12,7 +12,8 @@ class CategoriesController extends Controller
         $products = $category->productie()->paginate(5);
 //        dd($products);
         return view('categories.show'.[
-            'products'=>$products
+            'products'=>$products,
+            'category'=>$category
             ]);
     }
 }
