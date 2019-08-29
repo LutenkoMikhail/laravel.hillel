@@ -20,4 +20,33 @@ class Productie extends Model
     {
         return $this->belongsToMany(\App\Category::class);
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany(\App\Order::class);
+    }
+
+    public function setThumbnailAttribute($value)
+    {
+        if (is_string($value)) {
+            $this->attributes['thumbnail'] =
+                str_replace('public/storage/', '',$value);
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -81,12 +81,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Hello !
+                    {{ config('app.name', 'LARAVEL-MAGAZeN') }}
                 </div>
 
-{{--                <div class="links">--}}
-{{--                    <a href="https://laravel.com/docs">Docs</a>--}}
-{{--                    <a href="https://laracasts.com">Laracasts</a>--}}
+                <div class="links">
+                    <a href="/Products">Products.</a>
+                    <a href="/Products/Categories">Products Categories.</a>
 {{--                    <a href="https://laravel-news.com">News</a>--}}
 {{--                    <a href="https://blog.laravel.com">Blog</a>--}}
 {{--                    <a href="https://nova.laravel.com">Nova</a>--}}
