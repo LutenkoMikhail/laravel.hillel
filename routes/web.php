@@ -32,9 +32,15 @@ Route::namespace('Account')->prefix('account')->name('account.')->middleware(['a
         Route::post('{user}', 'UserController@update')->name('update');
     });
 
-Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth','admin'])
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth'])
+//Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth','IsAdmin'])
     ->group(function (){
         Route::get('/', 'AdminController@index')->name('dashboard');
+        Route::get('orders', 'OrderController@index')->name('orders');
+        Route::get('order', 'OrderController@show')->name('order');
+        Route::get('products/create', 'ProductController@create')->name('product.create');
+        Route::post('products/store', 'ProductController@store')->name('product.store');
+
     });
 
 

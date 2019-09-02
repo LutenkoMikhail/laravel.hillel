@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="card mb-4 shadow-sm">
+
+        <div class="card-body">
+            <h3>
+                Number Order:
+            </h3>
+            <h5 class="card-title">{{__($order->id) }}</h5>
+            <hr>
+            <h5>
+                Total price:
+            </h5>
+            <span class="text-muted">{{ $order->total_price}}$</span>
+            <div class="d-flex flex-column justify-content-center align-items-start">
+{{--                <small class="text-muted">Categories: </small>--}}
+{{--                <div class="btn-group align-self-end">--}}
+{{--                    @if(!empty($product->categories))--}}
+{{--                        @each('categories.parts.product_category', $product->categories, 'category')--}}
+{{--                    @endif--}}
+{{--                </div>--}}
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a href="{{ route('admin.order', $order->id) }}"
+                           class="btn btn-sm btn-outline-dark">{{ __('Show') }}</a>
+                    </div>
+                </div>
+                {{--                <a href="#" class="btn btn-primary">Go somewhere</a>--}}
+            </div>
+        </div>
+    </div>
+</div>
+
