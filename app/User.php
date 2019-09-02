@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Role;
+use Illuminate\Support\Facades\Config;
 
 class User extends Authenticatable
 {
@@ -17,8 +18,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id','name', 'email', 'password','telefon','birthday','surname',
-        'email_verified_at','remember_token'
+        'id', 'name', 'email', 'password', 'telefon', 'birthday', 'surname',
+        'email_verified_at', 'remember_token', 'role_id'
     ];
 
     /**
@@ -37,16 +38,27 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'birthday' => 'date:Y-m-d'
     ];
 
     public function role()
     {
-        return $this-hasOne(\App\Role::class);
+        return $this - hasOne(\App\Role::class);
     }
 
     public function orders()
     {
         return $this->hasMany(\App\Order::class);
+    }
+
+    public function isAdmin()
+    {
+        $adminRole = \App\Role::where(
+            'name',
+            '=',
+            Config::get('constants.db.roles.admin')
+        )->first();
+        return $this->role_id === $adminRole->id;
     }
 }
 

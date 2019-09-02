@@ -26,6 +26,12 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'LARAVEL-MAGAZeN') }}
                 </a>
+                <a class="navbar-brand" href="{{ url('products') }}">
+                    {{ ('Products') }}
+                </a>
+                <a class="navbar-brand" href="{{ url('categories') }}">
+                    {{ ('Categories') }}
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -55,6 +61,14 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if (Auth::user()->isAdmin())
+                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                        {{ __('Admin DashBoard') }}
+                                    </a>
+                                    @endif
+                                    <a class="dropdown-item" href="{{ route('account.main') }}">
+                                        {{ __('My Account') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

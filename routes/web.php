@@ -14,22 +14,28 @@
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/index', 'HomeController@index')->name('home.index');
+Route::get('/index', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 
 Route::get ('products','ProductController@index')->name('product');
 Route::get ('products/{product}','ProductController@show')->name('product.show');
 
+Route::get ('categories','CategoriesController@index')->name('categories.index');
 Route::get ('categories/{category}','CategoriesController@show')->name('categories.show');
 
-//Route::namespace('Account')->prefix('account')->name('account.')->middleware(['auth'])
-//    ->group(function (){
-//        Route::get('/', 'UserController@index')->name('main');
-//    });
+Route::namespace('Account')->prefix('account')->name('account.')->middleware(['auth'])
+    ->group(function (){
+        Route::get('/', 'UserController@index')->name('main');
+//        Route::get('{user}/edit', 'UserController@edit')->middleware('update,user')->name('edit');
+//        Route::put('{user}', 'UserController@update')->middleware('update,user')->name('update');
+        Route::get('{user}/edit', 'UserController@edit')->name('edit');
+        Route::post('{user}', 'UserController@update')->name('update');
+    });
 
-//Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth','admin'])
-//    ->group(function (){
-//        Route::get('/', 'AdminController@index')->name('dashboard');
-//    });
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth','admin'])
+    ->group(function (){
+        Route::get('/', 'AdminController@index')->name('dashboard');
+    });
 
 
 

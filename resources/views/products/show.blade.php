@@ -10,11 +10,14 @@
                 <p> {{__($category->description }}</p>
             </div>
             <div class="col-md-12">
-                <div class="container">
-                    <div class="row">
-                        @each('products.parts.product_view',$products,'product')
+                <div class ="album py-5 bg-light">
+                    <div class="container">
+                        <div class="row">
+                            @each('products.parts.product_view',$products,'product')
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

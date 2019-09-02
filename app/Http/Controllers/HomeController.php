@@ -27,12 +27,10 @@ class HomeController extends Controller
     {
         $categories = Category::all()->take(7);
         $products = Productie::all()->take(5);
-//        dd($categories);
-        return view('home',[
-            'categories'=>$categories,
-            'products'=>$products
+        return view('home', [
+            'categories' => $categories,
+            'products' => $products
         ]);
-//        return view('welcome');
     }
 }
 

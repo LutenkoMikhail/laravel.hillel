@@ -33,6 +33,15 @@ class Productie extends Model
                 str_replace('public/storage/', '',$value);
         }
     }
+    public function getPrice()
+    {
+        if ($this->in_stock===0){
+            $price=$this->price;
+        } else {
+            $price=$this->price-$this->discount;
+        }
+        return $price;
+    }
 }
 
 
