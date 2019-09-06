@@ -18,7 +18,10 @@ class Productie extends Model
 
     public function category()
     {
-        return $this->belongsToMany(\App\Category::class);
+        return $this->belongsToMany(\App\Category::class,
+            'product_categories',
+            'product_id',
+            'category_id')->withTimestamps();
     }
 
     public function orders()

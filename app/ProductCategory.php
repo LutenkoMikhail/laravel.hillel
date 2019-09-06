@@ -10,6 +10,7 @@ class ProductCategory extends Model
         'id', 'category_id', 'product_id'
     ];
 
+
     public function productie()
     {
         return $this->belongsToMany(\App\Productie::class);

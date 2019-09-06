@@ -36,10 +36,15 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth'])
 //Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth','IsAdmin'])
     ->group(function (){
         Route::get('/', 'AdminController@index')->name('dashboard');
+
         Route::get('orders', 'OrderController@index')->name('orders');
         Route::get('order', 'OrderController@show')->name('order');
-        Route::get('products/create', 'ProductController@create')->name('product.create');
-        Route::post('products/store', 'ProductController@store')->name('product.store');
+
+        Route::get('product/create', 'ProductController@create')->name('product.create');
+        Route::post('product/store', 'ProductController@store')->name('product.store');
+
+        Route::get('category/create', 'CategoryController@create')->name('category.create');
+        Route::post('category/store', 'CategoryController@store')->name('category.store');
 
     });
 

@@ -1,8 +1,8 @@
 <div class="container">
     <div class="card mb-4 shadow-sm">
-{{--        @php--}}
-{{--        dd(Storage::url($product->thumbnail))--}}
-{{--        @endphp--}}
+        {{--        @php--}}
+        {{--        dd(Storage::url($product->thumbnail))--}}
+        {{--        @endphp--}}
         @if( Storage::has ($product->thumbnail))
             <img src="{{ Storage::url($product->thumbnail) }}" height="225" class="card-img-top"
                  style="max-width: 100%; margin: 0 auto; display: block;">
@@ -23,13 +23,20 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         <a href="{{ route('product.show', $product->id) }}"
-                           class="btn btn-sm btn-outline-dark">{{ __('Show') }}</a>
+                           class="btn btn-primary">{{ __('Show') }}</a>
+{{--                        @if (Auth::user()->isAdmin())--}}
+{{--                            <div class="d-flex justify-content-between align-items-center">--}}
+{{--                                <div class="btn-group">--}}
+{{--                                    <a href="{{ route('product.show', $product->id) }}"--}}
+{{--                                       class="btn btn-danger">{{ __('EDIT') }}</a>--}}
+{{--                                    @endif--}}
+
+{{--                                </div>--}}
+                                <span class="text-muted">{{ $product->getPrice() }}$</span>
+                            </div>
+                            {{--                <a href="#" class="btn btn-primary">Go somewhere</a>--}}
                     </div>
-                    <span class="text-muted">{{ $product->getPrice() }}$</span>
                 </div>
-                {{--                <a href="#" class="btn btn-primary">Go somewhere</a>--}}
             </div>
         </div>
-    </div>
-</div>
 

@@ -20,17 +20,18 @@
                 @endif
 
             </div>
+            <form method="LINK" action={{ url('account/'.Auth::user()->id.'/edit') }}>
+                <div class="form-group row mb-0">
+                    <div class="col-md-6 offset-md-4">
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Account  Edit') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
 
-        <form method="LINK" action={{ url('account/'.Auth::user()->id.'/edit') }}>
-        <div class="form-group row mb-0">
-            <div class="col-md-6 offset-md-4">
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Account  Edit') }}
-                </button>
-            </div>
-        </div>
-        </form>
+
     </div>
 @endsection
 
