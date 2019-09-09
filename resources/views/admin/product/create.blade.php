@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <h3 class="text-center"> {{ __ ('Create Product.') }} </h3>
             </div>
-            <form action="{{route ('admin.product.store')}}" method="post" multiple="multiple"
+            <form action="{{route ('admin.product.store')}}" method="post"
                   enctype="multipart/form-data">
                 @csrf
 
@@ -143,7 +143,23 @@
                         @enderror
                     </div>
                 </div>
-
+                {{----}}
+                <div class="form-group row">
+                    <label for="thumbnail"
+                           class="col-md-4 col-form-label text-md-right">{{ __('Product Galleries') }}</label>
+                    <div class="col-md-6">
+                        <input id="thumbnail" type="file"
+                               class="form-control @error('productgalleries') is-invalid @enderror"
+                               name="productgalleries[ ]" value="{{ old('productgalleries') }}" accept="image/jpeg,image/png"
+                               autocomplete="productgalleries" multiple="multiple">
+                        @error('productgalleries')
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                    </div>
+                </div>
+                {{--                --}}
                 <p>
                     <label for="selectcategory"
                            class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>

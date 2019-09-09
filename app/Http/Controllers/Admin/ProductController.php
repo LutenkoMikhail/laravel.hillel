@@ -22,6 +22,9 @@ class ProductController extends Controller
 
     public function store(ProductCreateRequest $request)
     {
+
+//        dd($request->productgalleries);
+
         $pathThumbnail = $request->thumbnail->store(
             "/images/products/{$request->sku}",
             'public'
@@ -45,10 +48,23 @@ class ProductController extends Controller
                 $product->category()->attach(
                     $categoryID
                 );
+
+                if (!empty($request->productgalleries)) {
+                    foreach ($request->productgalleries as $productgallery) {
+                        $pathProductGallery = $productgallery->store(
+                            "/images/products/{$request->sku}",
+                            'public'
+                        );
+//                        dd($pathProductGallery);
+                        $product->gallery()->attach(
+                            $pathProductGallery
+                        );
+
+                    }
+                }
             }
             return redirect()->route('product');
         }
-
         return redirect()->back();
     }
 
@@ -56,6 +72,7 @@ class ProductController extends Controller
     {
         dd($productie);
     }
+
     public function delete(Productie $productie)
     {
         dd($productie);

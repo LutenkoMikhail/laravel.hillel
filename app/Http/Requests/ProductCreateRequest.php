@@ -31,7 +31,7 @@ class ProductCreateRequest extends FormRequest
             'price' => 'required|numeric|min:1',
             'in_stock' => 'required|boolean',
             'count' => 'required|numeric|min:1',
-            'thumbnail' => 'required|mimes:jpeg',
+            'thumbnail' => 'required|mimes:jpeg'
         ];
     }
 }

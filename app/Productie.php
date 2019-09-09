@@ -13,7 +13,10 @@ class Productie extends Model
 
     public function gallery()
     {
-        return $this->belongsToMan(\App\ProductGallery::class);
+        return $this->belongsToMany(\App\ProductGallery::class,
+            'product_galleries',
+            'product_id',
+            'image_path')->withTimestamps();
     }
 
     public function category()
@@ -33,15 +36,16 @@ class Productie extends Model
     {
         if (is_string($value)) {
             $this->attributes['thumbnail'] =
-                str_replace('public/storage/', '',$value);
+                str_replace('public/storage/', '', $value);
         }
     }
+
     public function getPrice()
     {
-        if ($this->in_stock===0){
-            $price=$this->price;
+        if ($this->in_stock === 0) {
+            $price = $this->price;
         } else {
-            $price=$this->price-$this->discount;
+            $price = $this->price - $this->discount;
         }
         return $price;
     }

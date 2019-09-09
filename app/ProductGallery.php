@@ -11,6 +11,9 @@ class ProductGallery extends Model
     ];
     public function productie()
     {
-        return $this->belongsToMany(\App\Productie::class);
+        return $this->belongsToMany(\App\Productie::class,
+            'product_galleries',
+            'image_path',
+            'product_id')->withTimestamps();
     }
 }
