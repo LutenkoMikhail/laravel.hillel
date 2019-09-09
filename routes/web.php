@@ -30,6 +30,8 @@ Route::namespace('Account')->prefix('account')->name('account.')->middleware(['a
 //        Route::put('{user}', 'UserController@update')->middleware('update,user')->name('update');
         Route::get('{user}/edit', 'UserController@edit')->name('edit');
         Route::post('{user}', 'UserController@update')->name('update');
+        Route::get('{user}/myorders', 'OrderController@index')->name('myorders');
+        Route::get('order/{order}/show', 'OrderController@show')->name('order');
     });
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth'])
@@ -38,14 +40,24 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth'])
         Route::get('/', 'AdminController@index')->name('dashboard');
 
         Route::get('orders', 'OrderController@index')->name('orders');
-        Route::get('order', 'OrderController@show')->name('order');
+        Route::get('order/{order}', 'OrderController@show')->name('order');
+        Route::get('order/{order}/edit', 'OrderController@edit')->name('order.edit');
+        Route::get('order/{order}/delete', 'OrderController@delete')->name('order.delete');
+
+        Route::get('customers', 'CustomerController@index')->name('customers');
+        Route::get('customer/{user}', 'CustomerController@show')->name('customer');
+        Route::get('customer/{customer}/edit', 'CustomerController@edit')->name('customers.edit');
+        Route::get('customer/{customer}/delete', 'CustomerController@delete')->name('customers.delete');
 
         Route::get('product/create', 'ProductController@create')->name('product.create');
         Route::post('product/store', 'ProductController@store')->name('product.store');
+        Route::get('product/{product}/edit', 'ProductController@edit')->name('product.edit');
+        Route::get('product/{product}/delete', 'ProductController@edit')->name('product.delete');
 
         Route::get('category/create', 'CategoryController@create')->name('category.create');
         Route::post('category/store', 'CategoryController@store')->name('category.store');
-
+        Route::get('category/{category}/edit', 'CategoryController@edit')->name('category.edit');
+        Route::get('category/{category}/delete', 'CategoryController@delete')->name('category.delete');
     });
 
 

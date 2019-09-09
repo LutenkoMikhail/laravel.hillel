@@ -1,4 +1,7 @@
+
 <a href="{{route('categories.show',$category->id)}}"
-   class="text-muted btn-outline-dark">
+   class="btn btn-secondary">
     {{__ ($category->title)}}
 </a>
+
+

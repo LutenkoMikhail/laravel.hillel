@@ -15,5 +15,20 @@ class OrderController extends Controller
             'orders'=>$orders
         ]);
     }
+    public function show(Order $order)
+    {
+        return view('admin.order.show',
+            [
+                'order'=>$order
+            ]);
+    }
+    public function edit(Order $order)
+    {
+        dd($order);
+    }
 
+    public function delete(Order $order)
+    {
+        dd($order);
+    }
 }

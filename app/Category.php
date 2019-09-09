@@ -14,7 +14,8 @@ class Category extends Model
     {
         return $this->belongsToMany(\App\Productie::class,
             'product_categories',
-            'product_id',
-            'category_id')->withTimestamps();
+            'category_id',
+            'product_id'
+            )->withTimestamps();
     }
 }

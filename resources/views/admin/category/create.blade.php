@@ -37,7 +37,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                         @enderror
-                        <button type="submit" class="btn btn-primary">Creat Category.</button>
+                        <button type="submit" class="btn btn-primary">Create Category.</button>
                     </div>
 
 

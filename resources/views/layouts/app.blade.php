@@ -32,6 +32,14 @@
             <a class="navbar-brand" href="{{ url('categories') }}">
                 {{ ('Categories') }}
             </a>
+            @auth
+                @if (!Auth::user()->isAdmin())
+                    <a class="navbar-brand" href="{{ url('account/'.Auth::user()->id.'/myorders')}}">
+                        {{ ('My Orders') }}
+
+                    </a>
+                    @endif
+                @endauth
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
@@ -99,21 +107,32 @@
         </div>
     </nav>
     <hr>
-    @auth
-        @if (Auth::user()->isAdmin())
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-                <div class="container">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li>
-                                <a class="nav-link" href="{{route('admin.orders')}}">
-                                    {{ ('Orders') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    @endif
-                    @endauth
+{{--    @auth--}}
+{{--        @if (Auth::user()->isAdmin())--}}
+{{--            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">--}}
+{{--                <div class="container">--}}
+{{--                    <div class="collapse navbar-collapse" id="navbarSupportedContent">--}}
+{{--                        <ul class="navbar-nav mr-auto">--}}
+{{--                            <li>--}}
+{{--                                <a class="nav-link" href="{{route('admin.orders')}}">--}}
+{{--                                    {{ ('Orders') }}--}}
+{{--                                </a>--}}
+
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a class="nav-link" href="{{route('admin.product.create')}}">--}}
+{{--                                    {{ ('Create Product') }}--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a class="nav-link" href="{{route('admin.category.create')}}">--}}
+{{--                                    {{ ('Create Category') }}--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                    @endif--}}
+{{--                    @endauth--}}
                 </div>
             </nav>
             <main class="py-4">

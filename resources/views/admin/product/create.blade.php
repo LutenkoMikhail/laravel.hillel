@@ -158,19 +158,19 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                 @enderror
-                <button type="submit" class="btn btn-primary">Creat Product.</button>
+                <button type="submit" class="btn btn-primary">Create Product.</button>
+            {{--        </div>--}}
+
         </div>
 
-    </div>
-
-    </form>
-    <div class="col-md-12">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
-    </div>
+        </form>
+        <div class="col-md-12">
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
+        </div>
 
 
 @endsection

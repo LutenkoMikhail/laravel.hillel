@@ -15,28 +15,39 @@
             <div class="d-flex flex-column justify-content-center align-items-start">
                 <small class="text-muted">Categories: </small>
                 <div class="btn-group align-self-end">
-                    @if(!empty($product->categories))
-                        @each('categories.parts.product_category', $product->categories, 'category')
+                    @if(!empty($product->category()->get()))
+                        @each('categories.parts.category_view', $product->category()->get(), 'category')
                     @endif
                 </div>
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                        <a href="{{ route('product.show', $product->id) }}"
-                           class="btn btn-primary">{{ __('Show') }}</a>
-{{--                        @if (Auth::user()->isAdmin())--}}
-{{--                            <div class="d-flex justify-content-between align-items-center">--}}
-{{--                                <div class="btn-group">--}}
-{{--                                    <a href="{{ route('product.show', $product->id) }}"--}}
-{{--                                       class="btn btn-danger">{{ __('EDIT') }}</a>--}}
-{{--                                    @endif--}}
+                    <h5>
+                        Price:
+                    </h5>
+                    <span class="text-muted">{{ $product->getPrice() }}$</span>
 
-{{--                                </div>--}}
-                                <span class="text-muted">{{ $product->getPrice() }}$</span>
+                </div>
+                <div class="btn-group">
+                    <a href="{{ route('product.show', $product->id) }}"
+                       class="btn btn-primary">{{ __('Show') }}
+                    </a>
+                    @auth
+                        @if (Auth::user()->isAdmin())
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="{{ route('admin.product.edit', $product->id) }}"
+                                       class="btn btn-danger">{{ __('EDIT') }}</a>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="{{ route('admin.product.delete', $product->id) }}"
+                                           class="btn btn-dark">{{ __('DELETE') }}</a>
+                                    </div>
+                                    @endif
+                                @endauth
                             </div>
-                            {{--                <a href="#" class="btn btn-primary">Go somewhere</a>--}}
-                    </div>
                 </div>
             </div>
         </div>
-
+    </div>
+</div>

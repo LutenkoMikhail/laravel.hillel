@@ -9,7 +9,28 @@
                     <hr>
                     {{__ ($category->description)}}
                     <hr>
+                    <div class="btn-group">
+                        <a href="{{ route('categories.show', $category->id) }}"
+                           class="btn btn-primary">{{ __('Show') }}
+                        </a>
+                        @auth
+                            @if (Auth::user()->isAdmin())
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="{{ route('admin.category.edit',  $category->id) }}"
+                                           class="btn btn-danger">{{ __('EDIT') }}</a>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="{{ route('admin.category.delete',  $category->id) }}"
+                                               class="btn btn-dark">{{ __('DELETE') }}</a>
+                                        </div>
+                                        @endif
 
+                                    @endauth
+
+                                </div>
+                    </div>
                 </a>
             </div>
         </div>

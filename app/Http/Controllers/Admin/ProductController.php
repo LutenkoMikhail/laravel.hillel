@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Requests\ProductCreateRequest;
+use App\Productie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -49,5 +50,14 @@ class ProductController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function edit(Productie $productie)
+    {
+        dd($productie);
+    }
+    public function delete(Productie $productie)
+    {
+        dd($productie);
     }
 }

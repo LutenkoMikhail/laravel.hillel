@@ -21,9 +21,9 @@
     </div>
 
 
-{{--                <div class="col-md-8">--}}
-{{--                    {{$categories->links()}}--}}
-{{--                </div>--}}
+    <div class="col-md-8">
+        {{$categories->links()}}
+    </div>
 
 @endsection
 

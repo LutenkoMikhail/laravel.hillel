@@ -7,25 +7,34 @@
             </h3>
             <h5 class="card-title">{{__($order->id) }}</h5>
             <hr>
+            Status: <span class="text-muted">{{ $order->getStatus()}}</span>
+            <hr>
             <h5>
                 Total price:
             </h5>
             <span class="text-muted">{{ $order->total_price}}$</span>
             <div class="d-flex flex-column justify-content-center align-items-start">
-{{--                <small class="text-muted">Categories: </small>--}}
-{{--                <div class="btn-group align-self-end">--}}
-{{--                    @if(!empty($product->categories))--}}
-{{--                        @each('categories.parts.product_category', $product->categories, 'category')--}}
-{{--                    @endif--}}
-{{--                </div>--}}
 
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         <a href="{{ route('admin.order', $order->id) }}"
-                           class="btn btn-sm btn-outline-dark">{{ __('Show') }}</a>
+                           class="btn btn-primary">{{ __('Show') }}</a>
                     </div>
+                    @auth
+                        @if (Auth::user()->isAdmin())
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="{{ route('admin.order.edit', $order->id) }}"
+                                       class="btn btn-danger">{{ __('EDIT') }}</a>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="{{ route('admin.order.delete', $order->id) }}"
+                                           class="btn btn-dark">{{ __('DELETE') }}</a>
+                                    </div>
+                                    @endif
+                                    @endauth
                 </div>
-                {{--                <a href="#" class="btn btn-primary">Go somewhere</a>--}}
             </div>
         </div>
     </div>

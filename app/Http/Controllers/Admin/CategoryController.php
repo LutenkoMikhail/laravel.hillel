@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Requests\CategoryCreateRequest;
 use App\Http\Controllers\Controller;
 
@@ -23,5 +24,14 @@ class CategoryController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function edit(Category $category)
+    {
+        dd($category);
+    }
+    public function delete(Category $category)
+    {
+        dd($category);
     }
 }
