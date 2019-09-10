@@ -10,6 +10,9 @@ class StatusOrder extends Model
         'id', 'name'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function order()
     {
         return $this->hasMany(\App\Order::class);

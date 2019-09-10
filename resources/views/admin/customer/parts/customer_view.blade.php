@@ -4,9 +4,6 @@
             <div class="col-md-12">
                 <h1 class="text-center">{{('Name-'.$customer->name)}}  </h1>
                 <h3 class="text-center"> {{  ('SurName- '.$customer->surname) }} </h3>
-                {{--                <h3 class="text-center"> {{ ('Telefon-'.$customer->telefon) }} </h3>--}}
-                {{--                <h3 class="text-center"> {{ ('Email-'.$customer->email) }} </h3>--}}
-                {{--                <h3 class="text-center"> {{ ('Birthday-'.date_create( $customer->birthday)->Format('Y-m-d'))}} </h3>--}}
             </div>
             <div class="btn-group">
 

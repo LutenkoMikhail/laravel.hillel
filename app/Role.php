@@ -7,11 +7,14 @@ use App\User;
 
 class Role extends Model
 {
-    protected $fillable=[
+    protected $fillable = [
         'id',
         'name'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function user()
     {
         return $this->hasMany(\App\User::class);

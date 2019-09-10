@@ -11,27 +11,42 @@ class Order extends Model
         'shipping_data_city', 'shipping_data_address', 'total_price'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function status()
     {
         return $this->hasOne(\App\StatusOrder::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function product()
     {
         return $this->hasMany(\App\OrderProduct::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function user()
     {
         return $this->hasOne(\App\User::class);
     }
 
+    /**
+     * @return mixed
+     */
     public function getStatus()
     {
-        $statusOrder=StatusOrder::where('id', $this->status_id)->get(['name']);
+        $statusOrder = StatusOrder::where('id', $this->status_id)->get(['name']);
         return $statusOrder[0]['name'];
     }
 
+    /**
+     * @return mixed
+     */
     public function getUserName()
     {
         $userName = User::where('id', $this->user_id)->get(['name']);

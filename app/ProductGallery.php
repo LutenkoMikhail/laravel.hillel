@@ -9,6 +9,10 @@ class ProductGallery extends Model
     protected $fillable = [
         'id', 'image_path', 'product_id'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function productie()
     {
         return $this->belongsToMany(\App\Productie::class,

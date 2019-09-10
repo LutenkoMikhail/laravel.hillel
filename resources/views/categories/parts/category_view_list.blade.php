@@ -27,10 +27,10 @@
                                         </div>
                                         @endif
 
-                                    @endauth
+                                        @endauth
 
+                                    </div>
                                 </div>
-                    </div>
                 </a>
             </div>
         </div>

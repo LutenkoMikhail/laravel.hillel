@@ -41,16 +41,25 @@ class User extends Authenticatable
         'birthday' => 'date:Y-m-d'
     ];
 
+    /**
+     * @return User
+     */
     public function role()
     {
         return $this - hasOne(\App\Role::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function orders()
     {
         return $this->hasMany(\App\Order::class);
     }
 
+    /**
+     * @return bool
+     */
     public function isAdmin()
     {
         $adminRole = \App\Role::where(

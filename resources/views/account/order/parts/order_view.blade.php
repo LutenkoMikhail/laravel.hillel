@@ -10,16 +10,10 @@
             Status: <span class="text-muted">{{ $order->getStatus()}}</span>
             <hr>
             <h5>
-                Total price:  <span class="text-muted">{{ $order->total_price}}$</span>
+                Total price: <span class="text-muted">{{ $order->total_price}}$</span>
             </h5>
 
             <div class="d-flex flex-column justify-content-center align-items-start">
-                {{--                <small class="text-muted">Categories: </small>--}}
-                {{--                <div class="btn-group align-self-end">--}}
-                {{--                    @if(!empty($product->categories))--}}
-                {{--                        @each('categories.parts.product_category', $product->categories, 'category')--}}
-                {{--                    @endif--}}
-                {{--                </div>--}}
 
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">

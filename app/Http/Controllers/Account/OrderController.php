@@ -9,6 +9,10 @@ use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
+    /**
+     * @param User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(User $user)
     {
         $orders = Order::where('user_id', $user->id)->paginate(3);
@@ -17,9 +21,13 @@ class OrderController extends Controller
         ]);
     }
 
+    /**
+     * @param Order $order
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show(Order $order)
     {
-//        dd($order);
+
         return view('account.order.showe', [
                 'order' => $order
             ]

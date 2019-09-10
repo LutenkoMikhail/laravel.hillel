@@ -150,7 +150,8 @@
                     <div class="col-md-6">
                         <input id="thumbnail" type="file"
                                class="form-control @error('productgalleries') is-invalid @enderror"
-                               name="productgalleries[ ]" value="{{ old('productgalleries') }}" accept="image/jpeg,image/png"
+                               name="productgalleries[ ]" value="{{ old('productgalleries') }}"
+                               accept="image/jpeg,image/png"
                                autocomplete="productgalleries" multiple="multiple">
                         @error('productgalleries')
                         <span class="invalid-feedback" role="alert">

@@ -8,11 +8,19 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+    /**
+     * @param User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(User $user)
     {
         return view('account.index');
     }
 
+    /**
+     * @param User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit(User $user)
     {
         return view('account.edit',
@@ -22,6 +30,11 @@ class UserController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, User $user)
     {
         $user->name = $request['name'];

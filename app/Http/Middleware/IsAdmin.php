@@ -18,6 +18,7 @@ class IsAdmin
     public function handle($request, Closure $next)
     {
         $adminRole = Role::where('name', '=', Config::get('constants.db.roles.admin'))->first();
+        dd();
         if ($request->user()->role_id!==$adminRole->id) {
 //            return redirect('/');
             return abort(404,'You Not Admin!');

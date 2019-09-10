@@ -10,12 +10,17 @@ class ProductCategory extends Model
         'id', 'category_id', 'product_id'
     ];
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function productie()
     {
         return $this->belongsToMany(\App\Productie::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function category()
     {
         return $this->belongsToMany(\App\Category::class);

@@ -10,6 +10,9 @@ use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         $categories = Category::all();
@@ -19,12 +22,12 @@ class ProductController extends Controller
             ]);
     }
 
-
+    /**
+     * @param ProductCreateRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(ProductCreateRequest $request)
     {
-
-//        dd($request->productgalleries);
-
         $pathThumbnail = $request->thumbnail->store(
             "/images/products/{$request->sku}",
             'public'
@@ -42,24 +45,20 @@ class ProductController extends Controller
         $product->count = $request->count;
         $product->thumbnail = $pathThumbnail;
 
-
         if ($product->save()) {
             foreach ($request->selectcategory as $categoryID) {
                 $product->category()->attach(
                     $categoryID
                 );
-
                 if (!empty($request->productgalleries)) {
                     foreach ($request->productgalleries as $productgallery) {
                         $pathProductGallery = $productgallery->store(
                             "/images/products/{$request->sku}",
                             'public'
                         );
-//                        dd($pathProductGallery);
                         $product->gallery()->attach(
                             $pathProductGallery
                         );
-
                     }
                 }
             }
@@ -68,11 +67,17 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @param Productie $productie
+     */
     public function edit(Productie $productie)
     {
         dd($productie);
     }
 
+    /**
+     * @param Productie $productie
+     */
     public function delete(Productie $productie)
     {
         dd($productie);

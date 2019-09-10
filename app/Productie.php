@@ -11,6 +11,9 @@ class Productie extends Model
         'price', 'discount', 'in_stock', 'count', 'thumbnail'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function gallery()
     {
         return $this->belongsToMany(\App\ProductGallery::class,
@@ -19,6 +22,9 @@ class Productie extends Model
             'image_path')->withTimestamps();
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function category()
     {
         return $this->belongsToMany(\App\Category::class,
@@ -27,11 +33,17 @@ class Productie extends Model
             'category_id')->withTimestamps();
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function orders()
     {
         return $this->belongsToMany(\App\Order::class);
     }
 
+    /**
+     * @param $value
+     */
     public function setThumbnailAttribute($value)
     {
         if (is_string($value)) {
@@ -40,6 +52,9 @@ class Productie extends Model
         }
     }
 
+    /**
+     * @return mixed
+     */
     public function getPrice()
     {
         if ($this->in_stock === 0) {

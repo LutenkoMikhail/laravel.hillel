@@ -24,7 +24,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'LARAVEL-MAGAZeN') }}
+                {{ config('app.name', 'LARAVEL-SHOP') }}
             </a>
             <a class="navbar-brand" href="{{ url('products') }}">
                 {{ ('Products') }}
@@ -38,8 +38,8 @@
                         {{ ('My Orders') }}
 
                     </a>
-                    @endif
-                @endauth
+                @endif
+            @endauth
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
@@ -83,6 +83,12 @@
                                     <a class="dropdown-item" href="{{ route('admin.category.create') }}">
                                         {{ __('Create Category') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('admin.orders') }}">
+                                        {{ __('Orders') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('admin.customers') }}">
+                                        {{ __('Customers') }}
+                                    </a>
                                 @endif
                                 <a class="dropdown-item" href="{{ route('account.main') }}">
                                     {{ __('My Account') }}
@@ -107,37 +113,11 @@
         </div>
     </nav>
     <hr>
-{{--    @auth--}}
-{{--        @if (Auth::user()->isAdmin())--}}
-{{--            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">--}}
-{{--                <div class="container">--}}
-{{--                    <div class="collapse navbar-collapse" id="navbarSupportedContent">--}}
-{{--                        <ul class="navbar-nav mr-auto">--}}
-{{--                            <li>--}}
-{{--                                <a class="nav-link" href="{{route('admin.orders')}}">--}}
-{{--                                    {{ ('Orders') }}--}}
-{{--                                </a>--}}
-
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <a class="nav-link" href="{{route('admin.product.create')}}">--}}
-{{--                                    {{ ('Create Product') }}--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <a class="nav-link" href="{{route('admin.category.create')}}">--}}
-{{--                                    {{ ('Create Category') }}--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                    @endif--}}
-{{--                    @endauth--}}
-                </div>
-            </nav>
-            <main class="py-4">
-                @yield('content')
-            </main>
+</div>
+</nav>
+<main class="py-4">
+    @yield('content')
+</main>
 </div>
 </body>
 </html>

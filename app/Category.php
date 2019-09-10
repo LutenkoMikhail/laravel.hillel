@@ -10,12 +10,15 @@ class Category extends Model
         'id', 'title', 'description'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function productie()
     {
         return $this->belongsToMany(\App\Productie::class,
             'product_categories',
             'category_id',
             'product_id'
-            )->withTimestamps();
+        )->withTimestamps();
     }
 }

@@ -10,11 +10,17 @@ class OrderProduct extends Model
         'id', 'order_id', 'producties_id', 'producties_count'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function order()
     {
         return $this->belongsToMany(\App\Order::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function productie()
     {
         return $this->belongsToMany(\App\Productie::class);

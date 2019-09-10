@@ -34,9 +34,9 @@
                                     </div>
                                     @endif
                                     @endauth
+                                </div>
+                            </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 

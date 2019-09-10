@@ -1,11 +1,8 @@
 <div class="container">
     <div class="card mb-4 shadow-sm">
-        {{--        @php--}}
-        {{--        dd(Storage::url($product->thumbnail))--}}
-        {{--        @endphp--}}
         @if( Storage::has ($product->thumbnail))
-            <img src="{{ Storage::url($product->thumbnail) }}" height="225" class="card-img-top"
-                 style="max-width: 100%; margin: 0 auto; display: block;">
+            <img src="{{ Storage::url($product->thumbnail) }}" height="250" width="350" class="card-img-top"
+                 style="max-width: 45%; margin: 0 auto; display: block;">
         @endif
 
         <div class="card-body">
@@ -44,10 +41,10 @@
                                            class="btn btn-dark">{{ __('DELETE') }}</a>
                                     </div>
                                     @endif
-                                @endauth
+                                    @endauth
+                                </div>
                             </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
