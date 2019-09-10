@@ -36,7 +36,7 @@ class Productie extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function orders()
+    public function order()
     {
         return $this->belongsToMany(\App\Order::class);
     }
