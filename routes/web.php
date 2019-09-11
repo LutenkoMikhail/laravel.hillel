@@ -12,7 +12,9 @@
 */
 
 
+
 Auth::routes();
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/index', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
@@ -60,7 +62,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth'])
         Route::get('category/{category}/delete', 'CategoryController@delete')->name('category.delete');
     });
 
-
+Route::middleware('auth')->group(function (){
+    Route::get('cart', 'CartController@index')->name('cart');
+    Route::post('cart/{product}/add', 'CartController@AddToCart')->name('cart.add');
+});
 
 
 
