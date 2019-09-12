@@ -15,7 +15,7 @@
                 <p> {{__($product->description) }} </p>
                 <p>Price: {{($product->price) }}</p>
                 <p>SKU: {{($product->sku) }}</p>
-                <p>In stock: {{($product->in_stock) }}</p>
+                <p>In stock: {{($product->count) }}</p>
             </div>
             <div class="col-md-6">
                 <div class="album py-5 bg-light">

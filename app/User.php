@@ -69,6 +69,16 @@ class User extends Authenticatable
         )->first();
         return $this->role_id === $adminRole->id;
     }
+
+    public function instanceCartName()
+    {
+        $userName = [
+            $this->id,
+            $this->name,
+            $this->surname,
+        ];
+        return implode('_', $userName);
+    }
 }
 
 

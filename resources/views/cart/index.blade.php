@@ -16,31 +16,19 @@
             </div>
 
             <div class="col-md-12">
-                @if(Cart::count()>0)
+                @if(Cart::instance('cart')->count()>0)
                 <table class="table table-light">
                     <thead>
                     <tr>
                         <th>Product</th>
-                        <th>Qty</th>
+                        <th>Count</th>
                         <th>Price</th>
-                        <th>Subtotal</th>
+                        <th>Total Price</th>
                     </tr>
                     </thead>
 
                     <tbody>
-
-                    @foreach(Cart::content() as $row)
-                        <tr>
-                            <td>
-                                <p><strong> {{$row->name}}</strong></p>
-                                <p>{{
-                                ($row->options->has('size') ? $row->options->size : '')}}</p>
-                            </td>
-                            <td><input type="text" value="{{ $row->qty}}"></td>
-                            <td>${{$row->price}}</td>
-                            <td>${{$row->total}}</td>
-                        </tr>
-                    @endforeach
+                    @each('cart.parts.product_view',Cart::instance('cart')->content() , 'row')
 
                     </tbody>
 

@@ -20,12 +20,17 @@ class CartController extends Controller
     public function AddToCart(Request $request, Productie $product)
     {
 //        dd($product);
-        Cart::add(
+        Cart::instance('cart')->add(
             $product->id,
             $product->title,
             $request->product_count,
-            $product->price
+            $product->getPrice()
         );
         return redirect()->back();
+    }
+
+    public function updateProductCount( Request $request)
+    {
+
     }
 }

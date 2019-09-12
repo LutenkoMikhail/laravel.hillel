@@ -28,8 +28,8 @@ Route::get ('categories/{category}','CategoriesController@show')->name('categori
 Route::namespace('Account')->prefix('account')->name('account.')->middleware(['auth'])
     ->group(function (){
         Route::get('/', 'UserController@index')->name('main');
-//        Route::get('{user}/edit', 'UserController@edit')->middleware('update,user')->name('edit');
-//        Route::put('{user}', 'UserController@update')->middleware('update,user')->name('update');
+//        Route::get('{user}/edit', 'UserController@edit')->middleware('can:update,user')->name('edit');
+//        Route::put('{user}', 'UserController@update')->middleware('can:update,user')->name('update');
         Route::get('{user}/edit', 'UserController@edit')->name('edit');
         Route::post('{user}', 'UserController@update')->name('update');
         Route::get('{user}/myorders', 'OrderController@index')->name('myorders');
@@ -65,6 +65,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth'])
 Route::middleware('auth')->group(function (){
     Route::get('cart', 'CartController@index')->name('cart');
     Route::post('cart/{product}/add', 'CartController@AddToCart')->name('cart.add');
+    Route::post('cart/product/count/update', 'CartController@updateProductCount')->name('cart.count.update');
 });
 
 
