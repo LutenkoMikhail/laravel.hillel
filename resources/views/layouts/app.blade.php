@@ -68,7 +68,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('cart') }}">{{ __('Cart') }}
                                 <strong>
-                                    : {{Cart::count()}}
+                                    : {{Cart::instance('cart')->count()}}
                                 </strong>
                             </a>
                         </li>
