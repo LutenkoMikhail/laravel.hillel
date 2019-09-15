@@ -30,7 +30,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        return true;
+        return $user->id === $model->id;
     }
 
     /**
@@ -53,7 +53,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        return $user->id === $model->isDirty();
+        return $user->id === $model->id;
     }
 
     /**
@@ -63,9 +63,9 @@ class UserPolicy
      * @param  \App\odel  $odel
      * @return mixed
      */
-    public function delete(User $user, odel $odel)
+    public function delete(User $user, User $model)
     {
-        //
+        return $user->id = $model->id;
     }
 
     /**
@@ -75,9 +75,9 @@ class UserPolicy
      * @param  \App\odel  $odel
      * @return mixed
      */
-    public function restore(User $user, odel $odel)
+    public function restore(User $user, User $model)
     {
-        //
+        return $user->id = $model->id;
     }
 
     /**
@@ -87,8 +87,8 @@ class UserPolicy
      * @param  \App\odel  $odel
      * @return mixed
      */
-    public function forceDelete(User $user, odel $odel)
+    public function forceDelete(User $user, User $model)
     {
-        //
+        return $user->id === $model->id;
     }
 }

@@ -11,6 +11,9 @@ class Productie extends Model
         'price', 'discount', 'in_stock', 'count', 'thumbnail'
     ];
 
+    protected $casts = [
+        'in_stock' => 'boolean',
+    ];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

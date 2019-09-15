@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
 
 class StatusOrder extends Model
 {
@@ -17,4 +18,5 @@ class StatusOrder extends Model
     {
         return $this->hasMany(\App\Order::class);
     }
+
 }

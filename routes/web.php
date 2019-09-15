@@ -64,27 +64,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth'])
 
 Route::middleware('auth')->group(function (){
     Route::get('cart', 'CartController@index')->name('cart');
-    Route::post('cart/{product}/add', 'CartController@AddToCart')->name('cart.add');
-    Route::post('cart/product/count/update', 'CartController@updateProductCount')->name('cart.count.update');
+    Route::post('cart/{product}/add', 'CartController@AddProductToCart')->name('cart.add');
+    Route::post('cart/{product}/count/update', 'CartController@updateProductCount')->name('cart.count.update');
+    Route::post('cart/{product}/delete', 'CartController@deleteProduct')->name('cart.delete');
+    Route::get('cart/create/order', 'CartController@createOrder')->name('cart.create.order');
 });
 
-
-
-
-
-
-//Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('/', function () { return view('welcome'); })->name('welcome');
-
-//Route::group(['namespace' => 'Frontend'], function () {
-//    Route::get('/Products', 'ProductController@index')->name('frontEndProductsIndex');
-//    Route::get('/Products/{id}', 'ProductController@show')->where('id', '[0-9]+')->name('frontEndProductShow');
-//
-//    Route::get('/Products/Categories', 'CategoriController@index')->name('frontEndCategoriIndex');
-//    Route::get('/Products/Categories/{id}', 'CategoriController@show')->where('id', '[0-9]+')->name('frontEndCategoriShow');
-//});
-
-
-
-
-//Route::resource('Productie','ProductieController');

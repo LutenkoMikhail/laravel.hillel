@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
 
 class Order extends Model
 {
@@ -45,6 +46,16 @@ class Order extends Model
     {
         $statusOrder = StatusOrder::where('id', $this->status_id)->get(['name']);
         return $statusOrder[0]['name'];
+    }
+
+    public function InProcess()
+    {
+        $InProcess = StatusOrder::where(
+            'name',
+            '=',
+            Config::get('constants.db.order_statuses')[0]
+        )->first();
+        return $InProcess->id;
     }
 
     /**
