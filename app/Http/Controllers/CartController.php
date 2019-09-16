@@ -12,9 +12,6 @@ class CartController extends Controller
 {
     public function index()
     {
-        $thumbnail = Productie::all('id', 'thumbnail');
-//        dd($thumbnail);
-        view()->share('thumbnail',$thumbnail);
         return view('cart.index');
     }
 
@@ -29,7 +26,7 @@ class CartController extends Controller
             $product->title,
             $request->product_count,
             $product->getPrice()
-        );
+        )->associate('App\Productie');
         return redirect()->back();
     }
 
@@ -57,7 +54,7 @@ class CartController extends Controller
         $inProcess = $order->InProcess();
         $userId = Auth::id();
         $contentCart = Cart::instance('cart')->content();
-        dd(  $contentCart);
+        dd($contentCart);
 
     }
 }
