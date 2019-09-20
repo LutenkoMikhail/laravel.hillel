@@ -13,7 +13,7 @@
                 <p> {{__($product->title) }} </p>
                 <h4>Discription :</h4>
                 <p> {{__($product->description) }} </p>
-                <p>Price: {{($product->price) }}</p>
+                <p>Price: {{($product->getPrice()) }}</p>
                 <p>SKU: {{($product->sku) }}</p>
                 <p>Count: {{($product->count) }}</p>
             </div>

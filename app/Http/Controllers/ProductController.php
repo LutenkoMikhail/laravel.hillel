@@ -8,32 +8,27 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-//        $products = Productie::with('category')->paginate(12);
-//        return view('products.index', ['products' => $products]);
-
-//        $categories = Category::all();
         $products = Productie::paginate(5);
         return view('products.index', [
-//            'categories' => $categories,
             'products' => $products
         ]);
     }
 
+    /**
+     * @param Productie $product
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show(Productie $product)
     {
-
-//        $categories = Category::all();
-//        $product->category()->
-//        $statusOrder=StatusOrder::where('id', $this->status_id)->get(['name']);
-//        $categories = Category::with('productie')->get();
-//        $categories = Category::where('productie',$product->id)->pivot->get()
-
         $categories = $product->category()->get();
-        return view('products.show',[
+        return view('products.show', [
             'categories' => $categories,
-            'product'=>$product
+            'product' => $product
         ]);
     }
 

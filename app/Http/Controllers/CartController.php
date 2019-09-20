@@ -54,7 +54,13 @@ class CartController extends Controller
         $inProcess = $order->InProcess();
         $userId = Auth::id();
         $contentCart = Cart::instance('cart')->content();
-        dd($contentCart);
+//        dd($contentCart);
+        return view('cart.create');
 
+    }
+
+    public function store(Request $request)
+    {
+        dd($request);
     }
 }
