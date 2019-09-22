@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderCreateRequest;
 use App\Order;
 use App\Productie;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+
     public function index()
     {
         return view('cart.index');
@@ -50,18 +52,40 @@ class CartController extends Controller
 
     public function createOrder(Request $request)
     {
-
-        $userId = Auth::id();
-        $contentCart = Cart::instance('cart')->content();
-//        dd($contentCart);
-        return view('cart.create');
+        return view('cart.create', [
+            'customerName' => Auth::user()->name,
+            'customerSurname' => Auth::user()->surname
+        ]);
 
     }
 
-    public function store(Request $request)
+    public function store(OrderCreateRequest $request)
     {
+
+//        https://kode-blog.io/laravel-5-shopping-cart
+
         $order = new \App\Order();
-        $inProcess = $order->InProcess();
-        dd($request);
+        $order->user_id = Auth::user()->id;
+        $order->status_id = $order->InProcess();
+        $order->shipping_data_customer = $request->customername . '  ' . $request->customersurname;
+        $order->shipping_data_country = $request->shipping_data_country;
+        $order->shipping_data_city = $request->shipping_data_city;
+        $order->shipping_data_address = $request->shipping_data_address;
+        $order->total_price = Cart::instance('cart')->total();
+
+        if ($order->save()) {
+//            dd(Cart::instance('cart')->content());
+            foreach (Cart::instance('cart')->content() as $product){
+                echo "Id: $product->id</br>";
+                echo "Name: $product->name</br>";
+                echo "Price $product->price</br>";
+                echo "qty $product->qty</br>";
+            }
+            dd(Cart::instance('cart')->content());
+
+            Cart::instance('cart')->destroy();
+            return redirect()->route('home');
+        }
+        return redirect()->back();
     }
 }

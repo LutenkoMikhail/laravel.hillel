@@ -57,15 +57,14 @@
                                             </tbody>
 
                                             <div class="form-group row">
-                                                <label for="customer"
-                                                       class="col-md-4 col-form-label text-md-right">{{ __('Customer') }}</label>
+                                                <label for="customername"
+                                                       class="col-md-4 col-form-label text-md-right">{{ __('Customer Name') }}</label>
                                                 <div class="col-md-6">
-                                                    <input id="customer" type="text"
-                                                           class="form-control @error('customer') is-invalid @enderror"
-                                                           name="customer" value="" required
-                                                           autocomplete="customer" autofocus>
+                                                    <input id="customername" type="text"
+                                                           class="form-control @error('customername') is-invalid @enderror"
+                                                           name="customername" value={{$customerName}} required autofocus>
 
-                                                    @error('customer')
+                                                    @error('customername')
                                                     <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                     </span>
@@ -73,6 +72,21 @@
                                                 </div>
                                             </div>
 
+                                            <div class="form-group row">
+                                                <label for="customersurname"
+                                                       class="col-md-4 col-form-label text-md-right">{{ __('Customer Surname') }}</label>
+                                                <div class="col-md-6">
+                                                    <input id="customersurname" type="text"
+                                                           class="form-control @error('customersurname') is-invalid @enderror"
+                                                           name="customersurname" value={{$customerSurname}} required autofocus>
+
+                                                    @error('customersurname')
+                                                    <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
 
                                             <div class="form-group row">
                                                 <label for="shipping_data_country"
@@ -80,7 +94,7 @@
                                                 <div class="col-md-6">
                                                     <input id="shipping_data_country" type="text"
                                                            class="form-control @error('shipping_data_country') is-invalid @enderror"
-                                                           name="shipping_data_country" value="" required
+                                                           name="shipping_data_country" value="{{ old('shipping_data_country') }}" max="100" required
                                                            autocomplete="shipping_data_country" autofocus>
 
                                                     @error('shipping_data_country')
@@ -97,7 +111,7 @@
                                                 <div class="col-md-6">
                                                     <input id="shipping_data_city" type="text"
                                                            class="form-control @error('shipping_data_city') is-invalid @enderror"
-                                                           name="shipping_data_city" value="" required
+                                                           name="shipping_data_city"  value="{{ old('shipping_data_city') }}" max="50" required
                                                            autocomplete="shipping_data_city" autofocus>
 
                                                     @error('shipping_data_city')
@@ -114,7 +128,7 @@
                                                 <div class="col-md-6">
                                                     <input id="shipping_data_address" type="text"
                                                            class="form-control @error('shipping_data_address') is-invalid @enderror"
-                                                           name="shipping_data_address" value="" required
+                                                           name="shipping_data_address" value="{{ old('shipping_data_address') }}" max="150" required
                                                            autocomplete="shipping_data_address" autofocus>
 
                                                     @error('shipping_data_address')

@@ -33,7 +33,7 @@ Shop Cart
 Удалить продукт с корзины
 
 Делаем возможность создания заказов статус In_process
-(ощищаем корзину cart::destroy()).
+
 В админке менять статут заказа.
 
 https://packagist.org/packages/bumbummen99/shoppingcart

@@ -35,17 +35,17 @@
                             <tr>
                                 <td colspan="2">&nbsp;</td>
                                 <td>Subtotal</td>
-                                <td>{{Cart::subtotal()}} $</td>
+                                <td>{{Cart::instance('cart')->subtotal()}} $</td>
                             </tr>
                             <tr>
                                 <td colspan="2">&nbsp;</td>
                                 <td>Tax</td>
-                                <td>{{Cart::tax()}} $</td>
+                                <td>{{Cart::instance('cart')->tax()}} $</td>
                             </tr>
                             <tr>
                                 <td colspan="2">&nbsp;</td>
                                 <td>Total</td>
-                                <td>{{Cart::total()}} $</td>
+                                <td>{{Cart::instance('cart')->total()}} $</td>
                             </tr>
                             </tbody>
 
