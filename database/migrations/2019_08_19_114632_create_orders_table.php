@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('status_id');
+            $table->string('shipping_data_customer', 150);
             $table->string('shipping_data_country', 100);
             $table->string('shipping_data_city', 50);
             $table->string('shipping_data_address', 150);

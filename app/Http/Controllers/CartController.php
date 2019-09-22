@@ -50,8 +50,7 @@ class CartController extends Controller
 
     public function createOrder(Request $request)
     {
-        $order = new \App\Order();
-        $inProcess = $order->InProcess();
+
         $userId = Auth::id();
         $contentCart = Cart::instance('cart')->content();
 //        dd($contentCart);
@@ -61,6 +60,8 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
+        $order = new \App\Order();
+        $inProcess = $order->InProcess();
         dd($request);
     }
 }

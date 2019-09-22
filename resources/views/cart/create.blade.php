@@ -57,8 +57,26 @@
                                             </tbody>
 
                                             <div class="form-group row">
-                                                <label for="name"
-                                                       class="col-md-4 col-form-label text-md-right">{{ __('Shipping Data Country') }}</label>
+                                                <label for="customer"
+                                                       class="col-md-4 col-form-label text-md-right">{{ __('Customer') }}</label>
+                                                <div class="col-md-6">
+                                                    <input id="customer" type="text"
+                                                           class="form-control @error('customer') is-invalid @enderror"
+                                                           name="customer" value="" required
+                                                           autocomplete="customer" autofocus>
+
+                                                    @error('customer')
+                                                    <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label for="shipping_data_country"
+                                                       class="col-md-4 col-form-label text-md-right">{{ __('Shipping Country') }}</label>
                                                 <div class="col-md-6">
                                                     <input id="shipping_data_country" type="text"
                                                            class="form-control @error('shipping_data_country') is-invalid @enderror"
@@ -74,8 +92,8 @@
                                             </div>
 
                                             <div class="form-group row">
-                                                <label for="name"
-                                                       class="col-md-4 col-form-label text-md-right">{{ __('Shipping Data City') }}</label>
+                                                <label for="shipping_data_city"
+                                                       class="col-md-4 col-form-label text-md-right">{{ __('Shipping City') }}</label>
                                                 <div class="col-md-6">
                                                     <input id="shipping_data_city" type="text"
                                                            class="form-control @error('shipping_data_city') is-invalid @enderror"
@@ -91,8 +109,8 @@
                                             </div>
 
                                             <div class="form-group row">
-                                                <label for="name"
-                                                       class="col-md-4 col-form-label text-md-right">{{ __('Shipping Data Address') }}</label>
+                                                <label for="shipping_data_address"
+                                                       class="col-md-4 col-form-label text-md-right">{{ __('Shipping Address') }}</label>
                                                 <div class="col-md-6">
                                                     <input id="shipping_data_address" type="text"
                                                            class="form-control @error('shipping_data_address') is-invalid @enderror"

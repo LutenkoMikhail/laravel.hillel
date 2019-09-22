@@ -14,6 +14,7 @@ $factory->define(Order::class, function (Faker $faker) {
     return [
         'user_id' => $user_id[0]['id'],
         'status_id' => $status_id[0]['id'],
+        'shipping_data_customer' => $faker->firstName.' '.$faker->LastName,
         'shipping_data_country' => $faker->country,
         'shipping_data_city' => $faker->city,
         'shipping_data_address' => $faker->address,
