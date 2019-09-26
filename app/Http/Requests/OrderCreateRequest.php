@@ -29,6 +29,6 @@ class OrderCreateRequest extends FormRequest
             'shipping_data_country' => 'required|min:3|max:100',
             'shipping_data_city' => 'required|min:3|max:50',
             'shipping_data_address' => 'required|min:15|max:150',
-         ];
+        ];
     }
 }

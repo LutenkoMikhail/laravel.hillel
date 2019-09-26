@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         return view('cart.index');
@@ -32,6 +34,11 @@ class CartController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @param Request $request
+     * @param Productie $product
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateProductCount(Request $request, Productie $product)
     {
         if ($product->count < $request->product_count) {
@@ -44,26 +51,35 @@ class CartController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @param Request $request
+     * @param Productie $product
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteProduct(Request $request, Productie $product)
     {
         Cart::instance('cart')->remove($request->rowId);
         return redirect()->back();
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function createOrder(Request $request)
     {
         return view('cart.create', [
             'customerName' => Auth::user()->name,
             'customerSurname' => Auth::user()->surname
         ]);
-
     }
 
+    /**
+     * @param OrderCreateRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(OrderCreateRequest $request)
     {
-
-//        https://kode-blog.io/laravel-5-shopping-cart
-
         $order = new \App\Order();
         $order->user_id = Auth::user()->id;
         $order->status_id = $order->InProcess();
@@ -74,15 +90,9 @@ class CartController extends Controller
         $order->total_price = Cart::instance('cart')->total();
 
         if ($order->save()) {
-//            dd(Cart::instance('cart')->content());
-            foreach (Cart::instance('cart')->content() as $product){
-                echo "Id: $product->id</br>";
-                echo "Name: $product->name</br>";
-                echo "Price $product->price</br>";
-                echo "qty $product->qty</br>";
+            foreach (Cart::instance('cart')->content() as $product) {
+                $order->product()->attach($product->id, ['producties_count' => $product->qty]);
             }
-            dd(Cart::instance('cart')->content());
-
             Cart::instance('cart')->destroy();
             return redirect()->route('home');
         }
