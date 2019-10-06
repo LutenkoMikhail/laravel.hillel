@@ -44,6 +44,14 @@ class Productie extends Model
         return $this->belongsToMany(\App\Order::class);
     }
 
+    public function follwers()
+    {
+        return $this->belongsToMany(\App\User::class,
+            'wishlist',
+            'product_id',
+            'id');
+    }
+
     /**
      * @param $value
      */

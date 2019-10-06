@@ -21,26 +21,33 @@ class UserEventSubscriber
     /**
      * Handle the event.
      *
-     * @param  object  $event
+     * @param object $event
      * @return void
      */
     public function handle($event)
     {
         //
     }
+
     /**
      * Handle user login events.
      */
-    public function handleUserLogin($event) {
+    public function handleUserLogin($event)
+    {
         Cart::instance('cart')->restore($event->user->instanceCartName());
+        Cart::instance('wishlist')->restore($event->user->instanceCartName());
     }
 
     /**
      * Handle user logout events.
      */
-    public function handleUserLogout($event) {
-        if (Cart::instance('cart')->count()>0) {
+    public function handleUserLogout($event)
+    {
+        if (Cart::instance('cart')->count() > 0) {
             Cart::instance('cart')->store($event->user->instanceCartName());
+        }
+        if (Cart::instance('wishlist')->count() > 0) {
+            Cart::instance('wishlist')->store($event->user->instanceCartName());
         }
 
     }
@@ -48,7 +55,7 @@ class UserEventSubscriber
     /**
      * Register the listeners for the subscriber.
      *
-     * @param  \Illuminate\Events\Dispatcher  $events
+     * @param \Illuminate\Events\Dispatcher $events
      */
     public function subscribe($events)
     {

@@ -12,21 +12,20 @@
 */
 
 
-
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/index', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
-Route::get ('products','ProductController@index')->name('product');
-Route::get ('products/{product}','ProductController@show')->name('product.show');
+Route::get('products', 'ProductController@index')->name('product');
+Route::get('products/{product}', 'ProductController@show')->name('product.show');
 
-Route::get ('categories','CategoriesController@index')->name('categories.index');
-Route::get ('categories/{category}','CategoriesController@show')->name('categories.show');
+Route::get('categories', 'CategoriesController@index')->name('categories.index');
+Route::get('categories/{category}', 'CategoriesController@show')->name('categories.show');
 
 Route::namespace('Account')->prefix('account')->name('account.')->middleware(['auth'])
-    ->group(function (){
+    ->group(function () {
         Route::get('/', 'UserController@index')->name('main');
 //        Route::get('{user}/edit', 'UserController@edit')->middleware('can:update,user')->name('edit');
 //        Route::put('{user}', 'UserController@update')->middleware('can:update,user')->name('update');
@@ -34,11 +33,13 @@ Route::namespace('Account')->prefix('account')->name('account.')->middleware(['a
         Route::post('{user}', 'UserController@update')->name('update');
         Route::get('{user}/myorders', 'OrderController@index')->name('myorders');
         Route::get('order/{order}/show', 'OrderController@show')->name('order');
+
+        Route::get('wishlist', 'WishListController@index')->name('wishlist');
     });
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth'])
 //Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth','IsAdmin'])
-    ->group(function (){
+    ->group(function () {
         Route::get('/', 'AdminController@index')->name('dashboard');
 
         Route::get('orders', 'OrderController@index')->name('orders');
@@ -64,12 +65,18 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth'])
         Route::get('category/{category}/delete', 'CategoryController@delete')->name('category.delete');
     });
 
-Route::middleware('auth')->group(function (){
+Route::middleware('auth')->group(function () {
     Route::get('cart', 'CartController@index')->name('cart');
     Route::post('cart/{product}/add', 'CartController@AddProductToCart')->name('cart.add');
     Route::post('cart/{product}/count/update', 'CartController@updateProductCount')->name('cart.count.update');
     Route::post('cart/{product}/delete', 'CartController@deleteProduct')->name('cart.delete.product');
     Route::get('cart/create/order', 'CartController@createOrder')->name('cart.create.order');
     Route::post('cart/store/order', 'CartController@store')->name('cart.store.order');
+
+    Route::get('wishlist/{product}/add', 'WishListController@addToWishList')->name('wishlist.add');
+    Route::post('wishlist/{product}/delete', 'WishListController@deleteFromWishList')->name('wishlist.delete');
+//
+//    Route::get('checkout', 'CheckoutController@createOrder')->name('checkout');
+
 });
 
