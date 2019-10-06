@@ -44,7 +44,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth'])
         Route::get('orders', 'OrderController@index')->name('orders');
         Route::get('order/{order}', 'OrderController@show')->name('order');
         Route::get('order/{order}/edit', 'OrderController@edit')->name('order.edit');
+        Route::post('{order}', 'OrderController@update')->name('order.update');
         Route::get('order/{order}/delete', 'OrderController@delete')->name('order.delete');
+
 
         Route::get('customers', 'CustomerController@index')->name('customers');
         Route::get('customer/{user}', 'CustomerController@show')->name('customer');
@@ -54,7 +56,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware(['auth'])
         Route::get('product/create', 'ProductController@create')->name('product.create');
         Route::post('product/store', 'ProductController@store')->name('product.store');
         Route::get('product/{product}/edit', 'ProductController@edit')->name('product.edit');
-        Route::get('product/{product}/delete', 'ProductController@edit')->name('product.delete');
+        Route::get('product/{product}/delete', 'ProductController@delete')->name('product.delete');
 
         Route::get('category/create', 'CategoryController@create')->name('category.create');
         Route::post('category/store', 'CategoryController@store')->name('category.store');

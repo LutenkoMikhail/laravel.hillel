@@ -48,6 +48,9 @@ class Order extends Model
         return $statusOrder[0]['name'];
     }
 
+    /**
+     * @return mixed
+     */
     public function InProcess()
     {
         $InProcess = StatusOrder::where(

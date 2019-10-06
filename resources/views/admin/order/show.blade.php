@@ -5,6 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <h1 class="text-center">{{('Customer-'.$order->getUserName())}}  </h1>
+                <h3 class="text-center">{{('Shipping Customer-'.$order->shipping_data_customer)}}  </h3>
                 <h5 class="text-center">{{('Status-'.$order->getStatus())}}  </h5>
                 <h5 class="text-center">{{('Shipping country-'.$order->shipping_data_country)}}  </h5>
                 <h5 class="text-center">{{('Shipping city-'.$order->shipping_data_city)}}  </h5>

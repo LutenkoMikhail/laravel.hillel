@@ -6,7 +6,9 @@ Account -> UserController
 обновление данных пользователя (да и всего впринципе) можно делать проще.
 $user->update($request->validated())
 
-Только предварительно надо создать UserUpdateRequest и в нем прописать правила. Так обычно принято
+Только предварительно надо создать UserUpdateRequest и в нем прописать правила. 
+Так обычно принято
+
 public function index(User $user) // А зачем тут пользователя принимать?
 {
     return view('account.index');

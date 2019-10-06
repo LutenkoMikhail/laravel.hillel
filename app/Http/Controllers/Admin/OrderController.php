@@ -25,6 +25,9 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
+
+//      $orderProducts=$order->product()->get();
+//        dd($orderProducts);
         return view('admin.order.show',
             [
                 'order' => $order
@@ -36,7 +39,30 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        dd($order);
+        $orderStatus = \App\StatusOrder::all('id', 'name');
+        return view('admin.order.edit',
+            [
+                'order' => $order,
+                'orderStatus' => $orderStatus
+            ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param Order $order
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, Order $order)
+    {
+        $idOrderStatus = \App\StatusOrder::where(
+            'name',
+            '=',
+            $request['status']
+        )->first('id');
+
+        $order->status_id = $idOrderStatus['id'];
+        $order->save();
+        return redirect()->route('admin.orders');
     }
 
     /**
@@ -44,6 +70,7 @@ class OrderController extends Controller
      */
     public function delete(Order $order)
     {
-        dd($order);
+        $order->delete();
+        return redirect()->route('admin.orders');
     }
 }

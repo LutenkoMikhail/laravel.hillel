@@ -19,4 +19,13 @@ class StatusOrder extends Model
         return $this->hasMany(\App\Order::class);
     }
 
+    public function getIdByName(string $nameStatus): int
+    {
+        return $idOrderStatus = $this->where(
+            'name',
+            '=',
+            $nameStatus
+        )->first('id');
+    }
+
 }
