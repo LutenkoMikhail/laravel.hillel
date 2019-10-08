@@ -50,9 +50,6 @@
                             </tbody>
 
                         </table>
-{{--                        <tfoot>--}}
-
-{{--                        </tfoot>--}}
                     </table>
 
             </div>

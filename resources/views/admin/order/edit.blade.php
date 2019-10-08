@@ -23,10 +23,7 @@
                                     <div class="container">
                                         <input type="radio" id="statusChoice{{$status->id}}"
                                                name="status" value="{{$status->name}}"
-                                               @if($order->getStatus()===$status->name)
-                                               checked
-                                            @endif
-                                        >
+                                               @if($order->getStatus()===$status->name) checked @endif >
                                         <label for="statusChoice{{$status->id}}">{{$status->name}}</label>
                                     </div>
                                 @endforeach

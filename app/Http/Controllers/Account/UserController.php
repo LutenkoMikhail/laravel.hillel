@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Account;
 
+use App\Http\Requests\UserUpdateRequest;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,7 +13,7 @@ class UserController extends Controller
      * @param User $user
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(User $user)
+    public function index()
     {
         return view('account.index');
     }
@@ -26,23 +27,19 @@ class UserController extends Controller
         return view('account.edit',
             [
                 'user' => $user
-            ]);
-
+            ]
+        );
     }
 
     /**
-     * @param Request $request
+     * @param UserUpdateRequest $request
      * @param User $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, User $user)
+
+    public function update(UserUpdateRequest $request, User $user)
     {
-        $user->name = $request['name'];
-        $user->surname = $request['surname'];
-        $user->telefon = $request['telefon'];
-        $user->birthday = $request['birthday'];
-        $user->email = $request['email'];
-        $user->save();
+        $user->update($request->validated());
         return redirect()->route('account.main');
     }
 }
