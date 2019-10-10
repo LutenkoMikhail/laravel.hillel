@@ -73,7 +73,7 @@ Route::middleware('auth')->group(function () {
     Route::get('cart/create/order', 'CartController@createOrder')->name('cart.create.order');
     Route::post('cart/store/order', 'CartController@store')->name('cart.store.order');
 
-    Route::get('wishlist/{product}/add', 'WishListController@addToWishList')->name('wishlist.add');
+    Route::post('wishlist/{product}/add', 'WishListController@addToWishList')->name('wishlist.add');
     Route::post('wishlist/{product}/delete', 'WishListController@deleteFromWishList')->name('wishlist.delete');
 //
 //    Route::get('checkout', 'CheckoutController@createOrder')->name('checkout');
