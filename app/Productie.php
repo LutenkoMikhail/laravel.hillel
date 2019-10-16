@@ -49,8 +49,9 @@ class Productie extends Model
         return $this->belongsToMany(\App\User::class,
             'wishlist',
             'product_id',
-            'id');
+            'user_id');
     }
+
 
     /**
      * @param $value

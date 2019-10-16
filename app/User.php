@@ -62,7 +62,17 @@ class User extends Authenticatable
         return $this->belongsToMany(\App\Productie::class,
             'wishlist',
             'user_id',
-            'id');
+            'product_id');
+    }
+
+    public function addToWish(Productie $product)
+    {
+        $this->wishes()->attach($product);
+
+    }    public function removeFromWish(Productie $product)
+    {
+        $this->wishes()->detach($product);
+
     }
 
     /**

@@ -2,8 +2,16 @@
 
 @section('content')
     <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+            </div>
+        </div>
         <div class="row justify-content-center">
-
             @if( Storage::has ($product->thumbnail))
                 <img src="{{ Storage::url($product->thumbnail) }}" height="280" width="250" class="card-img-top"
                      style="max-width: 45%; margin: 0 auto; display: block;">
@@ -19,9 +27,10 @@
                 <p>Price: {{($product->getPrice()) }}</p>
                 <p>SKU: {{($product->sku) }}</p>
                 <p>Count: {{($product->count) }}</p>
-                <hr>
+
                 @auth
                     @if($product->count>0)
+                        <hr>
                         <div>
                             <p>Add to Cart :</p>
                             <form action="{{route('cart.add',$product)}}" method="post" form class="form-inline">

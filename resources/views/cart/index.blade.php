@@ -55,7 +55,7 @@
             </div>
             <div class="btn-group">
                 <a href="{{ route('cart.create.order') }}"
-                   class="btn btn-success">{{ __('Make an order') }}</a>
+                   class="btn btn-success">{{ __('Make on order') }}</a>
             </div>
             @else
                 <h3 class="text-center">

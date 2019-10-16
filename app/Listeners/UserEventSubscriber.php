@@ -47,6 +47,7 @@ class UserEventSubscriber
             Cart::instance('cart')->store($event->user->instanceCartName());
         }
         if (Cart::instance('wishlist')->count() > 0) {
+//            dd(Cart::instance('wishlist')->content());
             Cart::instance('wishlist')->store($event->user->instanceCartName());
         }
 
