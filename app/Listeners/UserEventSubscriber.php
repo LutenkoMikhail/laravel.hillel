@@ -34,8 +34,8 @@ class UserEventSubscriber
      */
     public function handleUserLogin($event)
     {
-        Cart::instance('cart')->restore($event->user->instanceCartName());
-        Cart::instance('wishlist')->restore($event->user->instanceCartName());
+        Cart::instance('cart')->restore($event->user->instanceUserNameShoppingCart('cart'));
+        Cart::instance('wishlist')->restore($event->user->instanceUserNameShoppingCart('wishlist'));
     }
 
     /**
@@ -44,11 +44,11 @@ class UserEventSubscriber
     public function handleUserLogout($event)
     {
         if (Cart::instance('cart')->count() > 0) {
-            Cart::instance('cart')->store($event->user->instanceCartName());
+            Cart::instance('cart')->store($event->user->instanceUserNameShoppingCart('cart'));
         }
         if (Cart::instance('wishlist')->count() > 0) {
 //            dd(Cart::instance('wishlist')->content());
-            Cart::instance('wishlist')->store($event->user->instanceCartName());
+            Cart::instance('wishlist')->store($event->user->instanceUserNameShoppingCart('wishlist'));
         }
 
     }

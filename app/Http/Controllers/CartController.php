@@ -30,7 +30,7 @@ class CartController extends Controller
             $request->product_count,
             $product->getPrice()
         )->associate('App\Productie');
-        return redirect()->back();
+        return redirect()->back()->with("status", "The product \"{$product->title}\" was successfully added to cart.");
     }
 
     /**
@@ -58,7 +58,7 @@ class CartController extends Controller
     public function deleteProduct(Request $request, Productie $product)
     {
         Cart::instance('cart')->remove($request->rowId);
-        return redirect()->back();
+        return redirect()->back()->with("status", "The product \"{$product->title}\" removed from cart.");
     }
 
     /**

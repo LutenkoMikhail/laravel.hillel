@@ -69,7 +69,9 @@ class User extends Authenticatable
     {
         $this->wishes()->attach($product);
 
-    }    public function removeFromWish(Productie $product)
+    }
+
+    public function removeFromWish(Productie $product)
     {
         $this->wishes()->detach($product);
 
@@ -88,12 +90,13 @@ class User extends Authenticatable
         return $this->role_id === $adminRole->id;
     }
 
-    public function instanceCartName()
+    public function instanceUserNameShoppingCart(string $prefix = 'undefined')
     {
         $userName = [
             $this->id,
             $this->name,
             $this->surname,
+            $prefix
         ];
         return implode('_', $userName);
     }
