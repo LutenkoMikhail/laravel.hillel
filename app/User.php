@@ -90,13 +90,13 @@ class User extends Authenticatable
         return $this->role_id === $adminRole->id;
     }
 
-    public function instanceUserNameShoppingCart(string $prefix = 'undefined')
+    public function instanceUserNameShoppingCart(string $postfix = 'undefined')
     {
         $userName = [
             $this->id,
             $this->name,
             $this->surname,
-            $prefix
+            $postfix
         ];
         return implode('_', $userName);
     }
