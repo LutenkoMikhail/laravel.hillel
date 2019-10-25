@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@inject ('wishlist','\App\Services\WishListService')
 @section('content')
     <div class="container">
         <div class="row">
@@ -24,7 +24,7 @@
                 <hr>
                 <p> {{__($product->description) }} </p>
                 <hr>
-                <p>Price: {{($product->getPrice()) }}</p>
+                <p>Price: {{($product->getPrice()) }}$</p>
                 <p>SKU: {{($product->sku) }}</p>
                 <p>Count: {{($product->count) }}</p>
 
@@ -46,11 +46,25 @@
                     @endif
                 @endauth
                 <hr>
+                @if ($wishlist->isUserFollowed($product))
+
+                    <form action="{{route('wishlist.delete',$product)}}" method="POST">
+                        @csrf
+{{--                        <input type="hidden" name="rowId" min="1" value="{{ $row->rowId}}">--}}
+                        <input type="submit" value="Remove product" class="btn btn-danger" formaction="{{route('wishlist.delete',$product)}}">
+                    </form>
+
+
+
+                    @else
                 <form action="{{route('wishlist.add',$product)}}" method="post" form class="form-inline">
+
                     @csrf
                     <label for="wishlistt_count" class="sr-only">wishlist</label>
                     <button type="submit" class="btn btn-success">Add to WishList</button>
                 </form>
+
+                    @endif
             </div>
             <hr>
             <div class="col-md-6">

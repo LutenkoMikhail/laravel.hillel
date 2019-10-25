@@ -24,8 +24,32 @@ class WishListController extends Controller
 
     public function deleteFromWishList(Request $request,Productie $product)
     {
+//        dd($request);
         Auth()->user()->removeFromWish($product);
-        Cart::instance('wishlist')->remove($request->rowId);
+        if (!empty(($request->rowId))) {
+            Cart::instance('wishlist')->remove($request->rowId);
+        }else {
+            $content = Cart::instance('wishlist')->content();
+            foreach ($content as $cartItem) {
+                if ($cartItem->id===$product->id) {
+                    Cart::instance('wishlist')->remove($cartItem->rowId);
+                }
+
+            }
+        }
+
         return redirect()->back()->with("status", "The product \"{$product->title}\"was successfully delete in wish list. ");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

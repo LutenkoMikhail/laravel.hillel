@@ -7,6 +7,6 @@ use App\Productie;
 
 interface WishListServiceContract
 {
-    public function isUserFolled(Productie $product);
+    public function isUserFollowed(Productie $product);
 
 }
